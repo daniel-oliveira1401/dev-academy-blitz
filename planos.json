@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "descricao": "Domine a tipagem estática.",
+    "titulo": "Typescript Fundamentals",
+    "categoria": "Linguagens",
+    "nivel": "Iniciante",
+    "valorCredito": 300000,
+    "parcela": 1450.5,
+    "prazo": 200
+  },
+  {
+    "id": 2,
+    "descricao": "Sistemas escaláveis e robustos.",
+    "titulo": "Arquitetura Clean",
+    "categoria": "Arquitetura",
+    "nivel": "Avançado",
+    "valorCredito": 50000,
+    "parcela": 680.0,
+    "prazo": 80
+  },
+  {
+    "id": 3,
+    "descricao": "Layouts com Grid e Flexbox.",
+    "titulo": "CSS Moderno",
+    "categoria": "Frontend",
+    "nivel": "Intermediário",
+    "valorCredito": 95000,
+    "parcela": 1100.0,
+    "prazo": 72
+  },
+  {
+    "id": 4,
+    "descricao": "APIs escaláveis com padrões de mercado.",
+    "titulo": "Node.js Enterprise",
+    "categoria": "Backend",
+    "nivel": "Avançado",
+    "valorCredito": 500000,
+    "parcela": 2300.0,
+    "prazo": 180
+  }
+]

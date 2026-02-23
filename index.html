@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Academia para formação de desenvolvedores, com cursos, mentorias e projetos práticos."
+    />
+    <link rel="stylesheet" href="./src/css/estilo.css" />
+    <script defer type="module" src="./src/js/script.js"></script>
+    <title>DevAcademy</title>
+  </head>
+  <body>
+    <header class="main-nav">
+      <div class="nav-content">
+        <h1 class="logo">DevAcademy</h1>
+
+        <button
+          class="hamburger"
+          id="btnMenu"
+          aria-expanded="false"
+          aria-label="Abrir Menu"
+        >
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
+
+        <nav class="nav-links" id="menuLinks">
+          <ul>
+            <li><a href="#">Cursos</a></li>
+            <li><a href="#">Mentoria</a></li>
+            <li><a href="#">Comunidade</a></li>
+            <li><a href="#">Entrar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="consorcio-container">
+      <section class="header-filter">
+        <div class="filter-group">
+          <input
+            type="text"
+            id="filterInput"
+            placeholder="Busca tecnologia (ex: TypeScript)..."
+            aria-label="Filtrar planos"
+          />
+        </div>
+      </section>
+
+      <div id="planosGrid" class="planos-grid">
+        <p class="voltar">Carregando os melhores cursos para você...</p>
+      </div>
+    </main>
+
+    <footer class="rodape">
+      <div class="rodape__container">
+        <div class="coluna descricao">
+          <h4 class="coluna__titulo">
+            <span class="coluna__detalhe-titulo">Dev</span>Academy
+          </h4>
+          <p class="coluna__descricao">
+            Acelerando carreiras tech com foco no que o mercado realmente pede.
+          </p>
+        </div>
+        <div class="coluna">
+          <h4 class="coluna__titulo">EXPLORAR</h4>
+          <ul>
+            <li class="link"><a href="#">Cursos</a></li>
+            <li class="link"><a href="#">Mentoria</a></li>
+            <li class="link"><a href="#">Comunidade</a></li>
+          </ul>
+        </div>
+        <div class="coluna">
+          <h4 class="coluna__titulo">NEWSLETTER</h4>
+          <div class="newsletter">
+            <input
+              type="email"
+              placeholder="E-mail"
+              aria-label="Campo para digitar email"
+            />
+            <button class="btn-newsletter">OK</button>
+          </div>
+        </div>
+      </div>
+      <hr class="rodape__linha" />
+    </footer>
+  </body>
+</html>

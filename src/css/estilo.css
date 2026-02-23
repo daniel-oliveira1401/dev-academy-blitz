@@ -1,0 +1,358 @@
+/* 1. TOKENS DE DESIGN (Variáveis) */
+:root {
+  --primario-ciano: #00f2ff;
+  --fundo-claro: #1e293b;
+  --fundo-escuro: #0f172a;
+  --texto-branco: #f8fafc;
+  --borda-clara: #334155;
+
+  /* RESPONSIVIDADE AVANÇADA: Espaçamentos fluídos */
+  --padding-container: clamp(1rem, 5vw, 3rem);
+  --font-step-1: clamp(1.2rem, 2vw + 1rem, 1.8rem);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: var(--fundo-escuro);
+  color: var(--texto-branco);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.logo {
+  color: var(--primario-ciano);
+}
+
+/* 3. FILTRO (Mobile First) */
+.header-filter {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+#filterInput {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem 1.5rem;
+  background: var(--fundo-claro);
+  border: 2px solid var(--borda-clara);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  will-change: border-color;
+  transition: border-color 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primario-ciano);
+  }
+}
+
+/* 4. GRID DE PLANOS (Responsividade Avançada) */
+#planosGrid {
+  display: grid;
+  /* O Grid se auto-ajusta: mínimo de 280px por card ou 100% no mobile */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+}
+
+/* 5. CARD DO CONSÓRCIO (Implementação do HTML do TS) */
+.plan-card {
+  background: var(--fundo-claro);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--borda-clara);
+  will-change: transform;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeIn 0.5s ease;
+}
+
+.label {
+  background: var(--primario-ciano);
+  color: var(--fundo-escuro);
+  padding: 0.15rem 0.8rem;
+  border-radius: 10rem; /* qualquer valor acima da altura do label */
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  margin-bottom: 0.5rem;
+
+  h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}
+
+.card-body {
+  padding-bottom: 2rem;
+  margin-bottom: auto;
+  p {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--texto-branco);
+  }
+  strong {
+    color: var(--texto-branco);
+  }
+}
+
+/* 6. BOTÃO E INTERAÇÃO */
+.btn-primary {
+  background-color: transparent;
+  color: var(--primario-ciano);
+  border: 2px solid var(--primario-ciano);
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: filter 0.2s;
+  &:hover {
+    background-color: var(--primario-ciano);
+    color: var(--fundo-escuro);
+  }
+}
+
+/* Estilos da Navegação */
+.main-nav {
+  background: var(--fundo-escuro);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--padding-container);
+}
+
+/* Botão Hambúrguer (Mobile First) */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.line {
+  width: 30px;
+  height: 3px;
+  background: var(--primario-ciano);
+  transition: 0.3s;
+}
+
+/* Menu Mobile (Escondido) */
+.nav-links {
+  padding-top: 2rem;
+  position: fixed;
+  top: 0;
+  right: -100%; /* Fora da tela */
+  width: 80%;
+  height: 100vh;
+  background: var(--fundo-claro);
+  display: flex;
+  justify-content: center;
+  transition: 0.4s ease-in-out;
+}
+
+.nav-links.active {
+  right: 0; /* Desliza para dentro */
+}
+
+.nav-links ul {
+  list-style: none;
+  text-align: center;
+}
+
+.nav-links li {
+  margin: 2rem 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.consorcio-container {
+  padding-bottom: 4rem;
+  padding-inline: 1rem;
+  flex-grow: 1;
+}
+
+.rodape {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--fundo-claro);
+  padding-bottom: 2rem;
+  .rodape__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding-bottom: 2rem;
+    padding-top: 4rem;
+    padding-inline: 2rem;
+    .coluna {
+      &.descricao {
+        max-width: 20rem;
+        .coluna__titulo {
+          font-size: 1.35rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .coluna__descricao {
+          margin-top: 0;
+          line-height: 160%;
+        }
+      }
+      .coluna__titulo {
+        color: var(--primario-ciano);
+        margin-top: 0;
+      }
+      .coluna__detalhe-titulo {
+        color: var(--texto-branco);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        a {
+          color: var(--texto-branco);
+          text-decoration: none;
+          font-size: 1rem;
+        }
+      }
+
+      .newsletter {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        input {
+          border: none;
+          border-radius: 0.15rem;
+          padding: 0.5rem;
+          background-color: var(--fundo-escuro);
+          flex-grow: 1;
+          color: var(--texto-branco);
+        }
+
+        button {
+          background-color: var(--primario-ciano);
+          padding: 0.6rem 0.75rem;
+          border: none;
+          border-radius: 0.15rem;
+        }
+      }
+    }
+  }
+
+  .rodape__linha {
+    background-color: var(--texto-branco);
+    width: 100%;
+    opacity: 0.15;
+    margin: 0;
+    border: none;
+    height: 1px;
+  }
+}
+
+/* RESPONSIVIDADE AVANÇADA (Desktop) */
+@media (min-width: 768px) {
+  .main-nav {
+    margin-bottom: 5rem;
+  }
+
+  .hamburger {
+    display: none;
+  } /* Esconde o botão no PC */
+
+  .nav-links {
+    padding-top: unset;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    transition: none;
+  }
+
+  .nav-links ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+  .rodape {
+    .rodape__container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* Animação do Hambúrguer para X */
+.hamburger.open .line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* 7. PROGRESSIVE ENHANCEMENT
+constrói uma base que funcione em qualquer navegador (mesmo os antigos ou com JS desativado) e "melhorar" a 
+experiência com recursos avançados de CSS e JavaScript apenas para navegadores que os suportam.
+*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de hover apenas para dispositivos com mouse */
+@media (hover: hover) {
+  .plan-card:hover {
+    /*
+      Precisa do !important por conta de que a animation de fadeIn sobrescreve
+      o transform do hover
+      */
+    transform: translateY(-8px) !important;
+    border-color: var(--primario-ciano);
+  }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 350px) {
+  .plan-card {
+    padding: 1rem;
+  }
+}
